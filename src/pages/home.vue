@@ -22,7 +22,7 @@
   <Modal
     v-show="formModal.show"
     title="Form Modal Window"
-    @close="formModal.show = false"
+    @close="handleFormModalClose"
   >
     <template v-slot:body>
       <form @submit.prevent="submitForm">
@@ -82,6 +82,11 @@ export default {
     }
   },
   methods: {
+    handleFormModalClose() {
+      this.formModal.show = false
+      this.formModal.name = ''
+      this.formModal.email = ''
+    },
     submitForm() {
       console.log({
         name: this.formModal.name,

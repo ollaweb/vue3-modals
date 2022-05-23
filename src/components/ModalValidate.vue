@@ -1,5 +1,5 @@
 <template>
-  <Modal title="Form Modal Window with Validation" @close="$emit('close')">
+  <Modal title="Form Modal Window with Validation" @close="onClose">
     <template v-slot:body>
       <form @submit.prevent="onSubmit">
         <div class="form-item" :class="{ errorInput: v$.name.$error }">
@@ -25,7 +25,9 @@
           <p class="errorText" v-if="v$.email.required.$invalid">
             Field is required
           </p>
-          <p class="errorText" v-if="v$.email.$invalid">Email is't correct!</p>
+          <p class="errorText" v-if="v$.email.email.$invalid">
+            Email is't correct!
+          </p>
           <input
             :class="{ error: v$.email.$error }"
             v-model="email"
@@ -65,13 +67,14 @@ export default {
     }
   },
   methods: {
+    onClose() {
+      this.$emit('close')
+      this.name = ''
+      this.email = ''
+      this.v$.$reset()
+    },
     async onSubmit() {
       const isFormCorrect = await this.v$.$validate()
-      console.log(`Name.invalid is: ${this.v$.name.$invalid}`)
-      console.log(`Name dirty is: ${this.v$.name.minLength.$invalid}`)
-
-      console.log(`Email.invalid is: ${this.v$.email.$invalid}`)
-      console.log(`Email dirty is: ${this.v$.email.$dirty}`)
       if (isFormCorrect) {
         const user = {
           name: this.name,

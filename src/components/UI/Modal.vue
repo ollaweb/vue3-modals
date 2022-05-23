@@ -57,6 +57,7 @@ export default {
   left: 0;
   transition: opacity 0.2s ease;
   right: 0;
+  width: 100%;
   z-index: 998;
   background-color: rgba(00, 00, 00, 0.48);
 }

@@ -92,6 +92,9 @@ section,
   &>:not(:last-child) {
     margin-right: 20px;
   }
+  &_about {
+    flex-direction:column;
+  }
 }
 
 .container {
