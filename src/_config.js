@@ -15,6 +15,11 @@ export const links = [
     url: '/'
   },
   {
+    title: 'LogIn',
+    alias: 'login',
+    url: '/login'
+  },
+  {
     title: 'About',
     alias: 'about',
     url: '/about'

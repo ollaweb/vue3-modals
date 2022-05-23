@@ -1,7 +1,7 @@
 <template>
   <transition name="modal">
-    <div class="modal__wrapper" @click="$emit('close')">
-      <div class="modal-content">
+    <div class="modal__wrapper" @mousedown="$emit('close')">
+      <div class="modal-content" @mousedown.stop="">
         <!-- header -->
         <div class="modal-header">
           <span class="modal-title">{{ title }}</span>
