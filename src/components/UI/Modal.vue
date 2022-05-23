@@ -83,6 +83,7 @@ export default {
   padding-bottom: 20px;
   span {
     font-size: 24px;
+    font-weight: 700;
   }
   .button-close {
     cursor: pointer;
